@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Row Echelon form</title>
+  <!-- Bootstrap Core CSS -->
+  <link href="/static/css/bootstrap.css" rel="stylesheet">
+  <link href="/static/css/index.css" rel="stylesheet">
+  <script src="/static/js/jquery.js"></script>
+  <script src="/static/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="responsive-tables.js"></script>
+  <link href="responsive-tables.css" type="text/css" media="screen" rel="stylesheet"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css"
+    rel="stylesheet" />
+
+</head>
+
+<body>
+<h1>Hello, Users</h1>
+<h3>Welcome to the Maths Virtual Lab</h3>
+<div class="container">
+    <h4>Reduce a m*n (square/non-square both) matrix to its Row Echelon form (m , n <= 4).</h4>
+
+<form action="/submit" method="post">
+    <h4>Enter Any matrix</h4>
+    <div aria-required="true">
+        <input type="number" name="a1" required>
+        <input type="number" name="a2" required>
+        <input type="number" name="a3" required>
+        <br>
+        <input type="number" name="b1" required>
+        <input type="number" name="b2" required>
+        <input type="number" name="b3" required>
+        <br>
+        <input type="number" name="c1" required>
+        <input type="number" name="c2" required>
+        <input type="number" name="c3" required>
+    </div>
+
+
+    <input type="submit" class="btn" style="margin-top: 5px">
+    <h4>OUTPUT: </h4>
+    <br>
+    {% block body %}
+        {% for i in rowform %}
+        {{ i }}<br>
+        {% endfor %}
+        {{ error }}
+    {% endblock %}
+
+</form>
+
+</div>
+</body>
+</html>
