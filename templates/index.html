@@ -4,53 +4,282 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Row Echelon form</title>
-  <!-- Bootstrap Core CSS -->
-  <link href="/static/css/bootstrap.css" rel="stylesheet">
-  <link href="/static/css/index.css" rel="stylesheet">
-  <script src="/static/js/jquery.js"></script>
-  <script src="/static/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="responsive-tables.js"></script>
-  <link href="responsive-tables.css" type="text/css" media="screen" rel="stylesheet"/>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css"
-    rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
 
 </head>
 
 <body>
-<h1>Hello, Users</h1>
-<h3>Welcome to the Maths Virtual Lab</h3>
 <div class="container">
-    <h4>Reduce a m*n (square/non-square both) matrix to its Row Echelon form (m , n <= 4).</h4>
-
-<form action="/submit" method="post">
-    <h4>Enter Any matrix</h4>
-    <div aria-required="true">
-        <input type="number" name="a1" required>
-        <input type="number" name="a2" required>
-        <input type="number" name="a3" required>
-        <br>
-        <input type="number" name="b1" required>
-        <input type="number" name="b2" required>
-        <input type="number" name="b3" required>
-        <br>
-        <input type="number" name="c1" required>
-        <input type="number" name="c2" required>
-        <input type="number" name="c3" required>
+    <div class="row">
+        <div class="col-sm-8" style="background: #eee">
+        <h2>Hello, Users</h2>
+        <h4>Welcome to the Maths Virtual Lab</h4>
+        <p>Reduce a m*n (square/non-square both) matrix to its Row Echelon form (m , n <= 4).</p>
+    </div>
+    <div class="col-sm-4" style="background: #eee; border-left: 1px solid black;">
+            <h4>OUTPUT: </h4>
+            <br>
+            {% block body %}
+                {% for i in rowform %}
+                {{ i }}<br>
+                {% endfor %}
+                {{ error }}
+            {% endblock %}
+    </div>
     </div>
 
 
-    <input type="submit" class="btn" style="margin-top: 5px">
-    <h4>OUTPUT: </h4>
-    <br>
-    {% block body %}
-        {% for i in rowform %}
-        {{ i }}<br>
-        {% endfor %}
-        {{ error }}
-    {% endblock %}
+    <h5>Enter Any matrix</h5>
+    <div aria-required="true">
+        <div class="container">
+        <div class="row">
+            <div class="col-sm-4" style="background-color: #eee; height: 35vh;">
+                <div class="container">
+                    <form action="/submit" method="post">
+                        <center>
+                        <h4>2 by 2 matrix</h4>
+                            <div class="row">
+                                <input type="text" class="col" name="a1" style="margin: 5px;">
+                                <input type="text" class="col" name="a2" style="margin: 5px;">
+                            </div>
+                            <div class="row">
+                                <input type="text" class="col" name="b1" style="margin: 5px;">
+                                <input type="text" class="col" name="b2" style="margin: 5px;">
+                            </div>
 
-</form>
+                            <input type="submit">
+                        </center></form>
+                </div>
+            </div>
+
+
+
+
+            <div class="col-sm-4" style="background-color: #eee; height: 35vh;">
+                <div class="container">
+                    <form action="/submit2" method="post">
+                        <center>
+                        <h4>3 by 3 matrix</h4>
+                            <div class="row">
+                                <input type="text" class="col" name="a1" style="margin: 5px;">
+                                <input type="text" class="col" name="a2" style="margin: 5px;">
+                                <input type="text" class="col" name="a3" style="margin: 5px;">
+                            </div>
+                            <div class="row">
+                                <input type="text" class="col" name="b1" style="margin: 5px;">
+                                <input type="text" class="col" name="b2" style="margin: 5px;">
+                                <input type="text" class="col" name="b3" style="margin: 5px;">
+                            </div>
+                            <div class="row">
+                                <input type="text" class="col" name="c1" style="margin: 5px;">
+                                <input type="text" class="col" name="c2" style="margin: 5px;">
+                                <input type="text" class="col" name="c3" style="margin: 5px;">
+                            </div>
+                            <input type="submit">
+                        </center></form>
+                </div>
+            </div>
+            <div class="col-sm-4" style="background-color: #eee; height: 35vh;">
+                <div class="container">
+                    <form action="/submit3" method="post">
+                        <center>
+                        <h4>4 by 4 matrix</h4>
+                            <div class="row">
+                                <input type="text" class="col" name="a1" style="margin: 5px;">
+                                <input type="text" class="col" name="a2" style="margin: 5px;">
+                                <input type="text" class="col" name="a3" style="margin: 5px;">
+                                <input type="text" class="col" name="a4" style="margin: 5px;">
+                            </div>
+                            <div class="row">
+                                <input type="text" class="col" name="b1" style="margin: 5px;">
+                                <input type="text" class="col"name="b2" style="margin: 5px;">
+                                <input type="text" class="col"name="b3" style="margin: 5px;">
+                                <input type="text" class="col"name="b4" style="margin: 5px;">
+                            </div>
+                            <div class="row">
+                                <input type="text" class="col" name="c1" style="margin: 5px;">
+                                <input type="text" class="col" name="c2" style="margin: 5px;">
+                                <input type="text" class="col" name="c3" style="margin: 5px;">
+                                <input type="text" class="col" name="c4" style="margin: 5px;">
+                            </div>
+                            <div class="row">
+                                <input type="text" class="col" name="d1" style="margin: 5px;">
+                                <input type="text" class="col" name="d2" style="margin: 5px;">
+                                <input type="text" class="col" name="d3" style="margin: 5px;">
+                                <input type="text" class="col" name="d4" style="margin: 5px;">
+                            </div>
+                            <input type="submit">
+                        </center></form>
+                </div>
+            </div>
+          </div>
+
+
+
+        <div class="row">
+            <div class="col-sm-4" style="background-color: #eee; height: 35vh;">
+                <div class="container">
+                    <form action="/submit4" method="post">
+                        <center>
+                        <h4>2 by 3 matrix</h4>
+                            <div class="row">
+                                <input type="text" class="col" name="a1" style="margin: 5px;">
+                                <input type="text" class="col" name="a2" style="margin: 5px;">
+                                <input type="text" class="col" name="a3" style="margin: 5px;">
+                            </div>
+                            <div class="row">
+                                <input type="text" class="col" name="b1" style="margin: 5px;">
+                                <input type="text" class="col" name="b2" style="margin: 5px;">
+                                <input type="text" class="col" name="b3" style="margin: 5px;">
+                            </div>
+
+                            <input type="submit">
+                        </center></form>
+                </div>
+            </div>
+
+
+
+
+            <div class="col-sm-4" style="background-color: #eee; height: 35vh;">
+                <div class="container">
+                    <form action="/submit5" method="post">
+                        <center>
+                        <h4>3 by 2 matrix</h4>
+                            <div class="row">
+                                <input type="text" class="col" name="a1" style="margin: 5px;">
+                                <input type="text" class="col" name="a2" style="margin: 5px;">
+                            </div>
+                            <div class="row">
+                                <input type="text" class="col" name="b1" style="margin: 5px;">
+                                <input type="text" class="col" name="b2" style="margin: 5px;">
+                            </div>
+                            <div class="row">
+                                <input type="text" class="col" name="c1" style="margin: 5px;">
+                                <input type="text" class="col" name="c2" style="margin: 5px;">
+                            </div>
+                            <input type="submit">
+                        </center></form>
+                </div>
+            </div>
+            <div class="col-sm-4" style="background-color: #eee; height: 35vh;">
+                <div class="container">
+                    <form action="/submit6" method="post">
+                        <center>
+                        <h4>3 by 4 matrix</h4>
+                            <div class="row">
+                                <input type="text" class="col" name="a1" style="margin: 5px;">
+                                <input type="text" class="col" name="a2" style="margin: 5px;">
+                                <input type="text" class="col" name="a3" style="margin: 5px;">
+                                <input type="text" class="col" name="a4" style="margin: 5px;">
+                            </div>
+                            <div class="row">
+                                <input type="text" class="col" name="b1" style="margin: 5px;">
+                                <input type="text" class="col"name="b2" style="margin: 5px;">
+                                <input type="text" class="col"name="b3" style="margin: 5px;">
+                                <input type="text" class="col"name="b4" style="margin: 5px;">
+                            </div>
+                            <div class="row">
+                                <input type="text" class="col" name="c1" style="margin: 5px;">
+                                <input type="text" class="col" name="c2" style="margin: 5px;">
+                                <input type="text" class="col" name="c3" style="margin: 5px;">
+                                <input type="text" class="col" name="c4" style="margin: 5px;">
+                            </div>
+                            <input type="submit">
+                        </center></form>
+                </div>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col-sm-4" style="background-color: #eee; height: 35vh;">
+                <div class="container">
+                    <form action="/submi7" method="post">
+                        <center>
+                        <h4>2 by 4 matrix</h4>
+                            <div class="row">
+                                <input type="text" class="col" name="a1" style="margin: 5px;">
+                                <input type="text" class="col" name="a2" style="margin: 5px;">
+                                <input type="text" class="col" name="a3" style="margin: 5px;">
+                                <input type="text" class="col" name="a4" style="margin: 5px;">
+                            </div>
+                            <div class="row">
+                                <input type="text" class="col" name="b1" style="margin: 5px;">
+                                <input type="text" class="col" name="b2" style="margin: 5px;">
+                                <input type="text" class="col" name="b3" style="margin: 5px;">
+                                <input type="text" class="col" name="b4" style="margin: 5px;">
+                            </div>
+
+                            <input type="submit">
+                        </center></form>
+                </div>
+            </div>
+
+
+
+
+            <div class="col-sm-4" style="background-color: #eee; height: 35vh;">
+                <div class="container">
+                    <form action="/submit8" method="post">
+                        <center>
+                        <h4>4 by 2 matrix</h4>
+                            <div class="row">
+                                <input type="text" class="col" name="a1" style="margin: 5px;">
+                                <input type="text" class="col" name="a2" style="margin: 5px;">
+                            </div>
+                            <div class="row">
+                                <input type="text" class="col" name="b1" style="margin: 5px;">
+                                <input type="text" class="col" name="b2" style="margin: 5px;">
+                            </div>
+                            <div class="row">
+                                <input type="text" class="col" name="c1" style="margin: 5px;">
+                                <input type="text" class="col" name="c2" style="margin: 5px;">
+                            </div>
+                            <div class="row">
+                                <input type="text" class="col" name="d1" style="margin: 5px;">
+                                <input type="text" class="col" name="d2" style="margin: 5px;">
+                            </div>
+                            <input type="submit">
+                        </center></form>
+                </div>
+            </div>
+            <div class="col-sm-4" style="background-color: #eee; height: 35vh;">
+                <div class="container">
+                    <form action="/submit9" method="post">
+                        <center>
+                        <h4>4 by 3 matrix</h4>
+                            <div class="row">
+                                <input type="text" class="col" name="a1" style="margin: 5px;">
+                                <input type="text" class="col" name="a2" style="margin: 5px;">
+                                <input type="text" class="col" name="a3" style="margin: 5px;">
+                            </div>
+                            <div class="row">
+                                <input type="text" class="col" name="b1" style="margin: 5px;">
+                                <input type="text" class="col"name="b2" style="margin: 5px;">
+                                <input type="text" class="col"name="b3" style="margin: 5px;">
+                            </div>
+                            <div class="row">
+                                <input type="text" class="col" name="c1" style="margin: 5px;">
+                                <input type="text" class="col" name="c2" style="margin: 5px;">
+                                <input type="text" class="col" name="c3" style="margin: 5px;">
+                            </div>
+                            <div class="row">
+                                <input type="text" class="col" name="d1" style="margin: 5px;">
+                                <input type="text" class="col" name="d2" style="margin: 5px;">
+                                <input type="text" class="col" name="d3" style="margin: 5px;">
+                            </div>
+                            <input type="submit">
+                        </center></form>
+                </div>
+            </div>
+          </div>
+    </div>
+    </div>
+
+
+
+
 
 </div>
 </body>
